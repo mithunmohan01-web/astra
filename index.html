@@ -23,12 +23,38 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#f9f8f5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            --bg-primary: #f9f8f5;
+            --bg-secondary: #f1f0ec;
+            --bg-tertiary: #e8e6e1;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5c5650;
+            --text-muted: #9a938b;
+            --accent: #A67C00;
+            --accent-hover: #8C6900;
+            --accent-dim: rgba(166, 124, 0, 0.10);
+            --accent-border: rgba(166, 124, 0, 0.22);
+            --border: #ddd9d2;
+            --card-bg: rgba(241, 240, 236, 0.6);
+            --card-bg-hover: rgba(232, 230, 225, 0.9);
+            --header-bg: rgba(249, 248, 245, 0.88);
+            --header-bg-scroll: rgba(249, 248, 245, 0.96);
+            --header-border: rgba(0, 0, 0, 0.06);
+            --gradient-start: #A67C00;
+            --gradient-end: #C08B00;
+            --logo-mark: #2a2725;
+            --logo-text: #1a1a1a;
+            --logo-sub: #6b645c;
+            --logo-tagline: #7a7369;
+            --btn-primary-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --bg-tertiary: #1a1a1a;
@@ -41,7 +67,43 @@
             --accent-border: rgba(255, 215, 0, 0.25);
             --border: #242424;
             --card-bg: rgba(26, 26, 26, 0.6);
+            --card-bg-hover: rgba(26, 26, 26, 0.9);
+            --header-bg: rgba(10, 10, 10, 0.85);
+            --header-bg-scroll: rgba(10, 10, 10, 0.95);
+            --header-border: rgba(255, 215, 0, 0.12);
+            --gradient-start: #FFD700;
+            --gradient-end: #FFA500;
+            --logo-mark: #FFD700;
+            --logo-text: #ffffff;
+            --logo-sub: #FFD700;
+            --logo-tagline: rgba(255, 215, 0, 0.65);
+            --btn-primary-text: #000000;
         }
+
+        .theme-toggle {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .theme-toggle .sun-icon { display: none; }
+        .theme-toggle .moon-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
 
         * {
             margin: 0;
@@ -77,9 +139,9 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.85);
+            background: var(--header-bg);
             backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+            border-bottom: 1px solid var(--header-border);
             z-index: 1000;
             transition: background 0.3s ease;
         }
@@ -203,7 +265,7 @@
         }
 
         .hero h1 .gradient-text {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -244,7 +306,7 @@
 
         .btn-primary {
             background: var(--accent);
-            color: #000000;
+            color: var(--btn-primary-text);
             font-weight: 600;
             letter-spacing: 0.02em;
         }
@@ -343,7 +405,7 @@
         .service-card:hover {
             transform: translateY(-4px);
             border-color: rgba(255, 215, 0, 0.25);
-            background: rgba(26, 26, 26, 0.9);
+            background: var(--card-bg-hover);
         }
 
         .service-card:hover::before {
@@ -396,7 +458,7 @@
         }
 
         .equipment-item:hover {
-            background: rgba(26, 26, 26, 0.9);
+            background: var(--card-bg-hover);
             border-color: rgba(255, 215, 0, 0.2);
         }
 
@@ -415,6 +477,10 @@
         }
 
         /* About Section */
+        .about {
+            padding-top: 1rem;
+        }
+
         .about-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -457,7 +523,7 @@
         }
 
         .feature:hover {
-            background: rgba(26, 26, 26, 0.9);
+            background: var(--card-bg-hover);
             border-color: rgba(255, 215, 0, 0.2);
         }
 
@@ -509,7 +575,7 @@
         }
 
         .contact-item:hover {
-            background: rgba(26, 26, 26, 0.9);
+            background: var(--card-bg-hover);
             border-color: rgba(255, 215, 0, 0.2);
         }
 
@@ -750,7 +816,7 @@
         }
 
         .entry-tile:hover {
-            border-color: #FFD700;
+            border-color: var(--accent);
             background: rgba(255, 215, 0, 0.05);
             transform: translateY(-3px);
         }
@@ -770,7 +836,7 @@
         }
 
         .entry-tile:hover .entry-tile-label {
-            color: #FFD700;
+            color: var(--accent);
         }
 
         /* Equipment tiles inside section-header */
@@ -792,7 +858,7 @@
         }
 
         .equip-tile:hover {
-            border-color: #FFD700;
+            border-color: var(--accent);
         }
 
         .equip-tile h5 {
@@ -843,7 +909,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 1.6rem;
             font-weight: 700;
-            color: #FFD700;
+            color: var(--accent);
             letter-spacing: 0.05em;
         }
 
@@ -876,27 +942,19 @@
         <nav>
             <div class="logo">
                 <svg width="380" height="62" viewBox="0 0 380 62" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Hexagon outer -->
-                  <polygon points="22,3 40,3 49,18 40,33 22,33 13,18" fill="none" stroke="#FFD700" stroke-width="1.8"/>
-                  <!-- Hexagon inner -->
-                  <polygon points="25,9 37,9 43,18 37,27 25,27 19,18" fill="none" stroke="#FFD700" stroke-width="0.9" opacity="0.35"/>
-                  <!-- Center dot -->
-                  <circle cx="31" cy="18" r="3.2" fill="#FFD700"/>
-                  <!-- Spoke lines -->
-                  <line x1="22" y1="3"  x2="31" y2="18" stroke="#FFD700" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="40" y1="3"  x2="31" y2="18" stroke="#FFD700" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="49" y1="18" x2="31" y2="18" stroke="#FFD700" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="40" y1="33" x2="31" y2="18" stroke="#FFD700" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="22" y1="33" x2="31" y2="18" stroke="#FFD700" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="13" y1="18" x2="31" y2="18" stroke="#FFD700" stroke-width="0.5" opacity="0.45"/>
-                  <!-- ASTRANEXUS single word in white -->
-                  <text x="62" y="22" font-family="Orbitron, sans-serif" font-weight="700" font-size="16" fill="#FFFFFF" letter-spacing="1.5">ASTRANEXUS</text>
-                  <!-- Thin rule -->
-                  <line x1="62" y1="28" x2="370" y2="28" stroke="#FFD700" stroke-width="0.4" opacity="0.3"/>
-                  <!-- SYSTEMS in yellow -->
-                  <text x="62" y="38" font-family="Rajdhani, sans-serif" font-weight="700" font-size="8" fill="#FFD700" letter-spacing="5">SYSTEMS</text>
-                  <!-- Tagline in yellow -->
-                  <text x="62" y="52" font-family="Rajdhani, sans-serif" font-size="7" fill="#FFD700" letter-spacing="2.5" opacity="0.65">GLOBAL BUSINESS ESTABLISHMENT</text>
+                  <polygon points="22,3 40,3 49,18 40,33 22,33 13,18" fill="none" style="stroke: var(--logo-mark)" stroke-width="1.8"/>
+                  <polygon points="25,9 37,9 43,18 37,27 25,27 19,18" fill="none" style="stroke: var(--logo-mark)" stroke-width="0.9" opacity="0.35"/>
+                  <circle cx="31" cy="18" r="3.2" style="fill: var(--logo-mark)"/>
+                  <line x1="22" y1="3"  x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
+                  <line x1="40" y1="3"  x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
+                  <line x1="49" y1="18" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
+                  <line x1="40" y1="33" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
+                  <line x1="22" y1="33" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
+                  <line x1="13" y1="18" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
+                  <text x="62" y="22" font-family="Orbitron, sans-serif" font-weight="700" font-size="16" style="fill: var(--logo-text)" letter-spacing="1.5">ASTRANEXUS</text>
+                  <line x1="62" y1="28" x2="370" y2="28" style="stroke: var(--logo-sub)" stroke-width="0.4" opacity="0.3"/>
+                  <text x="62" y="38" font-family="Rajdhani, sans-serif" font-weight="700" font-size="8" style="fill: var(--logo-sub)" letter-spacing="5">SYSTEMS</text>
+                  <text x="62" y="52" font-family="Rajdhani, sans-serif" font-size="7" style="fill: var(--logo-tagline)" letter-spacing="2.5">GLOBAL BUSINESS ESTABLISHMENT</text>
                 </svg>
             </div>
             <ul class="nav-links">
@@ -906,6 +964,14 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
         </nav>
     </header>
 
@@ -1240,18 +1306,30 @@
             });
         });
 
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('theme', theme);
+        }
+        setTheme(localStorage.getItem('theme') || 'light');
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.hasAttribute('data-theme');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+
         // Header background on scroll
         const header = document.querySelector('header');
-        let lastScroll = 0;
-
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 50) {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            if (window.pageYOffset > 50) {
+                header.style.background = 'var(--header-bg-scroll)';
             } else {
-                header.style.background = 'rgba(10, 10, 10, 0.85)';
+                header.style.background = 'var(--header-bg)';
             }
-            lastScroll = currentScroll;
         });
     </script>
 </body>

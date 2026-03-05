@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PD27QGXM');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9K051EL72"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C9K051EL72');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astranexus Systems — India Market Entry for Foreign Companies | Aerospace, Sensors & Simulation</title>
@@ -937,6 +955,11 @@
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD27QGXM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Header -->
     <header>
         <nav>
@@ -1294,6 +1317,17 @@
                 mode: 'no-cors'
             })
             .then(() => {
+                gtag('event', 'form_submit', {
+                    event_category: 'Lead',
+                    event_label: data.service || 'not_specified',
+                    organization: data.organization
+                });
+                dataLayer.push({
+                    event: 'form_submit',
+                    form_name: 'contact',
+                    service_selected: data.service || 'not_specified',
+                    organization: data.organization
+                });
                 alert('Thank you for your inquiry! We will contact you within 24 hours.');
                 form.reset();
             })
@@ -1320,6 +1354,79 @@
         themeToggle.addEventListener('click', () => {
             const isDark = document.documentElement.hasAttribute('data-theme');
             setTheme(isDark ? 'light' : 'dark');
+        });
+
+        // --- Analytics Event Tracking ---
+
+        // CTA button clicks
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const label = this.textContent.trim();
+                const isPrimary = this.classList.contains('btn-primary');
+                gtag('event', 'cta_click', {
+                    event_category: 'CTA',
+                    event_label: label,
+                    cta_type: isPrimary ? 'primary' : 'secondary'
+                });
+                dataLayer.push({
+                    event: 'cta_click',
+                    cta_label: label,
+                    cta_type: isPrimary ? 'primary' : 'secondary'
+                });
+            });
+        });
+
+        // Email link clicks
+        document.querySelectorAll('.contact-item-text a[href*="email"], .contact-item-text a[href*="mail"]').forEach(link => {
+            link.addEventListener('click', function () {
+                const email = this.textContent.trim();
+                gtag('event', 'email_click', {
+                    event_category: 'Contact',
+                    event_label: email
+                });
+                dataLayer.push({ event: 'email_click', email_address: email });
+            });
+        });
+
+        // Fallback: track any mailto: or cf-email links in the contact section
+        document.querySelector('#contact').addEventListener('click', function (e) {
+            const link = e.target.closest('a');
+            if (!link) return;
+            const href = link.getAttribute('href') || '';
+            if (href.includes('mail') || href.includes('email') || link.querySelector('.__cf_email__')) {
+                const email = link.textContent.trim();
+                gtag('event', 'email_click', {
+                    event_category: 'Contact',
+                    event_label: email
+                });
+                dataLayer.push({ event: 'email_click', email_address: email });
+            }
+        });
+
+        // Nav link clicks
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function () {
+                gtag('event', 'nav_click', {
+                    event_category: 'Navigation',
+                    event_label: this.textContent.trim()
+                });
+                dataLayer.push({ event: 'nav_click', nav_item: this.textContent.trim() });
+            });
+        });
+
+        // Section visibility tracking
+        document.querySelectorAll('section[id]').forEach(section => {
+            new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gtag('event', 'section_view', {
+                            event_category: 'Engagement',
+                            event_label: entry.target.id
+                        });
+                        dataLayer.push({ event: 'section_view', section_id: entry.target.id });
+                    }
+                });
+            }, { threshold: 0.3 }).observe(section);
         });
 
         // Header background on scroll

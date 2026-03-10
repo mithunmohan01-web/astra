@@ -53,23 +53,25 @@
             --text-primary: #1a1a1a;
             --text-secondary: #5c5650;
             --text-muted: #9a938b;
-            --accent: #A67C00;
-            --accent-hover: #8C6900;
-            --accent-dim: rgba(166, 124, 0, 0.10);
-            --accent-border: rgba(166, 124, 0, 0.22);
+            --accent: #1a1a1a;
+            --accent-hover: #333333;
+            --accent-dim: rgba(0, 0, 0, 0.06);
+            --accent-border: rgba(0, 0, 0, 0.18);
             --border: #ddd9d2;
             --card-bg: rgba(241, 240, 236, 0.6);
             --card-bg-hover: rgba(232, 230, 225, 0.9);
-            --header-bg: rgba(249, 248, 245, 1);
-            --header-bg-scroll: rgba(249, 248, 245, 1);
-            --header-border: rgba(0, 0, 0, 0.06);
-            --gradient-start: #A67C00;
-            --gradient-end: #C08B00;
+            --header-bg: rgba(0, 0, 0, 1);
+            --header-bg-scroll: rgba(0, 0, 0, 1);
+            --header-border: rgba(255, 255, 255, 0.08);
+            --gradient-start: #1a1a1a;
+            --gradient-end: #444444;
             --logo-mark: #2a2725;
             --logo-text: #1a1a1a;
             --logo-sub: #6b645c;
             --logo-tagline: #7a7369;
             --btn-primary-text: #ffffff;
+            --nav-link-color: rgba(255, 255, 255, 0.75);
+            --nav-link-hover: #ffffff;
         }
 
         [data-theme="dark"] {
@@ -96,11 +98,13 @@
             --logo-sub: #FFD700;
             --logo-tagline: rgba(255, 215, 0, 0.65);
             --btn-primary-text: #000000;
+            --nav-link-color: #a0a0a0;
+            --nav-link-hover: #FFD700;
         }
 
         .theme-toggle {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -109,11 +113,22 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.75);
             flex-shrink: 0;
         }
 
         .theme-toggle:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background: var(--bg-tertiary);
+            border-color: var(--border);
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
             border-color: var(--accent);
             color: var(--accent);
         }
@@ -186,8 +201,8 @@
             width: auto;
         }
 
-        .logo .logo-light { display: block; }
-        .logo .logo-dark { display: none; }
+        .logo .logo-light { display: none; }
+        .logo .logo-dark { display: block; }
         [data-theme="dark"] .logo .logo-light { display: none; }
         [data-theme="dark"] .logo .logo-dark { display: block; }
 
@@ -198,7 +213,7 @@
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--nav-link-color);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9375rem;
@@ -214,12 +229,12 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--accent);
+            background: var(--nav-link-hover);
             transition: width 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--nav-link-hover);
         }
 
         .nav-links a:hover::after {
@@ -245,7 +260,7 @@
             transform: translateX(-50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
             border-radius: 50%;
             z-index: 0;
         }
@@ -266,8 +281,8 @@
         .hero-badge {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-border);
             border-radius: 100px;
             color: var(--accent);
             font-size: 0.875rem;
@@ -337,6 +352,10 @@
         .btn-primary:hover {
             background: var(--accent-hover);
             transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .btn-primary:hover {
             box-shadow: 0 8px 24px rgba(255, 215, 0, 0.25);
         }
 
@@ -348,7 +367,7 @@
 
         .btn-secondary:hover {
             background: var(--bg-tertiary);
-            border-color: rgba(255, 215, 0, 0.4);
+            border-color: var(--accent-border);
             color: var(--accent);
         }
 
@@ -427,7 +446,7 @@
 
         .service-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 215, 0, 0.25);
+            border-color: var(--accent-border);
             background: var(--card-bg-hover);
         }
 
@@ -441,8 +460,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.15);
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-border);
             border-radius: 12px;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
@@ -482,7 +501,7 @@
 
         .equipment-item:hover {
             background: var(--card-bg-hover);
-            border-color: rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-border);
         }
 
         .equipment-item h4 {
@@ -547,7 +566,7 @@
 
         .feature:hover {
             background: var(--card-bg-hover);
-            border-color: rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-border);
         }
 
         .feature-icon {
@@ -599,7 +618,7 @@
 
         .contact-item:hover {
             background: var(--card-bg-hover);
-            border-color: rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-border);
         }
 
         .contact-item-icon {
@@ -670,9 +689,9 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: rgba(255, 215, 0, 0.5);
+            border-color: var(--accent-border);
             background: var(--bg-secondary);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.06);
+            box-shadow: 0 0 0 3px var(--accent-dim);
         }
 
         .form-group textarea {
@@ -840,7 +859,7 @@
 
         .entry-tile:hover {
             border-color: var(--accent);
-            background: rgba(255, 215, 0, 0.05);
+            background: var(--accent-dim);
             transform: translateY(-3px);
         }
 

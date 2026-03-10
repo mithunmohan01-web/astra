@@ -60,8 +60,8 @@
             --border: #ddd9d2;
             --card-bg: rgba(241, 240, 236, 0.6);
             --card-bg-hover: rgba(232, 230, 225, 0.9);
-            --header-bg: rgba(249, 248, 245, 0.88);
-            --header-bg-scroll: rgba(249, 248, 245, 0.96);
+            --header-bg: rgba(249, 248, 245, 1);
+            --header-bg-scroll: rgba(249, 248, 245, 1);
             --header-border: rgba(0, 0, 0, 0.06);
             --gradient-start: #A67C00;
             --gradient-end: #C08B00;
@@ -181,10 +181,15 @@
             flex-shrink: 0;
         }
 
-        .logo svg {
-            height: 62px;
+        .logo img {
+            height: 68px;
             width: auto;
         }
+
+        .logo .logo-light { display: block; }
+        .logo .logo-dark { display: none; }
+        [data-theme="dark"] .logo .logo-light { display: none; }
+        [data-theme="dark"] .logo .logo-dark { display: block; }
 
         .nav-links {
             display: flex;
@@ -963,23 +968,10 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">
-                <svg width="380" height="62" viewBox="0 0 380 62" xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="22,3 40,3 49,18 40,33 22,33 13,18" fill="none" style="stroke: var(--logo-mark)" stroke-width="1.8"/>
-                  <polygon points="25,9 37,9 43,18 37,27 25,27 19,18" fill="none" style="stroke: var(--logo-mark)" stroke-width="0.9" opacity="0.35"/>
-                  <circle cx="31" cy="18" r="3.2" style="fill: var(--logo-mark)"/>
-                  <line x1="22" y1="3"  x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="40" y1="3"  x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="49" y1="18" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="40" y1="33" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="22" y1="33" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
-                  <line x1="13" y1="18" x2="31" y2="18" style="stroke: var(--logo-mark)" stroke-width="0.5" opacity="0.45"/>
-                  <text x="62" y="22" font-family="Orbitron, sans-serif" font-weight="700" font-size="16" style="fill: var(--logo-text)" letter-spacing="1.5">ASTRANEXUS</text>
-                  <line x1="62" y1="28" x2="370" y2="28" style="stroke: var(--logo-sub)" stroke-width="0.4" opacity="0.3"/>
-                  <text x="62" y="38" font-family="Rajdhani, sans-serif" font-weight="700" font-size="8" style="fill: var(--logo-sub)" letter-spacing="5">SYSTEMS</text>
-                  <text x="62" y="52" font-family="Rajdhani, sans-serif" font-size="7" style="fill: var(--logo-tagline)" letter-spacing="2.5">GLOBAL BUSINESS ESTABLISHMENT</text>
-                </svg>
-            </div>
+            <a href="#home" class="logo">
+                <img class="logo-light" src="astranexus_white_tm.svg" alt="Astranexus Systems">
+                <img class="logo-dark" src="astranexus_black_tm.svg" alt="Astranexus Systems">
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>

@@ -186,7 +186,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 3rem;
+            padding: 0.65rem 2.5rem;
             position: relative;
         }
 
@@ -198,14 +198,13 @@
         }
 
         .logo img {
-            height: 68px;
+            max-height: clamp(56px, 11vw, 104px);
+            max-width: min(480px, 90vw);
             width: auto;
+            height: auto;
+            object-fit: contain;
+            object-position: left center;
         }
-
-        .logo .logo-light { display: none; }
-        .logo .logo-dark { display: block; }
-        [data-theme="dark"] .logo .logo-light { display: none; }
-        [data-theme="dark"] .logo .logo-dark { display: block; }
 
         .nav-links {
             display: flex;
@@ -249,7 +248,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10rem 3rem 6rem;
+            padding: 8.5rem 3rem 6rem;
             overflow: hidden;
         }
 
@@ -587,6 +586,70 @@
             color: var(--text-primary);
         }
 
+        .about-directors {
+            max-width: 1200px;
+            margin: 4.5rem auto 0;
+            padding-top: 3.5rem;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 6rem;
+        }
+
+        .about-directors-heading {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .about-directors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .director-card {
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .director-card:hover {
+            background: var(--card-bg-hover);
+            border-color: var(--accent-border);
+        }
+
+        .director-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+
+        .director-role {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            line-height: 1.4;
+        }
+
+        .director-card p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .director-card p:last-child {
+            margin-bottom: 0;
+        }
+
         /* Contact Section */
         .contact {
             background: var(--bg-secondary);
@@ -766,11 +829,15 @@
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
+
+            .about-directors-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 1.25rem 1.5rem;
+                padding: 0.55rem 1.25rem;
             }
 
             .nav-links {
@@ -782,7 +849,7 @@
             }
 
             .hero {
-                padding: 8rem 1.5rem 4rem;
+                padding: 7rem 1.5rem 4rem;
             }
 
             .services-grid,
@@ -989,14 +1056,14 @@
     <header>
         <nav>
             <a href="#home" class="logo">
-                <img class="logo-light" src="astranexus_white_tm.svg" alt="Astranexus Systems">
-                <img class="logo-dark" src="astranexus_black_tm.svg" alt="Astranexus Systems">
+                <img src="astranexus_black_tm.svg" alt="Astranexus Systems" width="2400" height="660">
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#equipment">Sectors</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#leadership">Leadership</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -1161,6 +1228,27 @@
                     <span class="feature-icon">✓</span>
                     <span class="feature-text">Large-Scale Programme Pursuit & Closure</span>
                 </div>
+            </div>
+        </div>
+
+        <div class="about-directors" id="leadership">
+            <h3 class="about-directors-heading">Leadership</h3>
+            <div class="about-directors-grid">
+                <article class="director-card reveal">
+                    <h4>Joseph Mathews</h4>
+                    <p class="director-role">Director – Sales</p>
+                    <p>Joseph Mathews serves as Director – Sales, bringing over 37 years of diverse professional experience across industries and international markets.</p>
+                    <p>He began his career in 1989 in the office automation and equipment sector, before expanding his experience to East Africa, where he worked in duty-free retail from 1994 to 2000. Returning to India, he went on to build over two decades of expertise in corporate sales within the workplace design and build services sector, where he established a strong track record in driving revenue growth, managing key client relationships, and delivering large-scale solutions.</p>
+                    <p>Currently, Joseph leads sales initiatives in Astranexus India’s aerospace and defence sector, where he focuses on strategic business development, partnership building, and market expansion. His approach is anchored in long-term relationship building, deep market understanding, and delivering value-driven outcomes.</p>
+                </article>
+                <article class="director-card reveal">
+                    <h4>Anirvan Roy</h4>
+                    <p class="director-role">Director – Business Development &amp; Finance</p>
+                    <p>Anirvan Roy is a seasoned business and finance leader with over three decades of experience in building and scaling businesses within large, complex, and highly regulated environments. As Director – Business Development &amp; Finance at Astranexus Private Ltd, he is responsible for shaping the company’s growth strategy, financial framework, and strategic partnerships as it enters India’s space and defence sectors.</p>
+                    <p>Anirvan has held multiple senior leadership roles at ExxonMobil Corporation and its affiliates across India and the Asia Pacific region, including General Manager – Distributor Business Development and General Manager, Automotive Lubricants. He has also served as Chief Executive Officer of Petronas Lubricants India. Across these roles, he has led large-scale commercial operations, driven multi-channel market expansion, and delivered sustained growth in competitive and technical compliance-intensive marketplaces.</p>
+                    <p>His experience uniquely combines commercial acumen with financial rigor—spanning strategic planning, large-account development, and channel transformation alongside capital allocation, project finance, M&amp;A, governance, and enterprise-wide control systems. He is particularly recognized for aligning business growth with strong financial discipline and operational resilience.</p>
+                    <p>At Astranexus, Anirvan is focused on building institution-grade capabilities from the ground up—establishing robust financial and governance structures while simultaneously enabling agile market entry &amp; strategic partnerships with scalable business models.</p>
+                </article>
             </div>
         </div>
     </section>

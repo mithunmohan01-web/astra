@@ -623,6 +623,23 @@
             border-color: var(--accent-border);
         }
 
+        .director-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .director-photo {
+            width: 112px;
+            height: 112px;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center top;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+
         .director-card h4 {
             font-size: 1.2rem;
             font-weight: 700;
@@ -635,7 +652,7 @@
             font-size: 0.8125rem;
             font-weight: 600;
             color: var(--accent);
-            margin-bottom: 1.25rem;
+            margin-bottom: 0;
             line-height: 1.4;
         }
 
@@ -1235,19 +1252,29 @@
             <h3 class="about-directors-heading">Leadership</h3>
             <div class="about-directors-grid">
                 <article class="director-card reveal">
-                    <h4>Joseph Mathews</h4>
-                    <p class="director-role">Director – Sales</p>
-                    <p>Joseph Mathews serves as Director – Sales, bringing over 37 years of diverse professional experience across industries and international markets.</p>
-                    <p>He began his career in 1989 in the office automation and equipment sector, before expanding his experience to East Africa, where he worked in duty-free retail from 1994 to 2000. Returning to India, he went on to build over two decades of expertise in corporate sales within the workplace design and build services sector, where he established a strong track record in driving revenue growth, managing key client relationships, and delivering large-scale solutions.</p>
-                    <p>Currently, Joseph leads sales initiatives in Astranexus India’s aerospace and defence sector, where he focuses on strategic business development, partnership building, and market expansion. His approach is anchored in long-term relationship building, deep market understanding, and delivering value-driven outcomes.</p>
-                </article>
-                <article class="director-card reveal">
-                    <h4>Anirvan Roy</h4>
-                    <p class="director-role">Director – Business Development &amp; Finance</p>
+                    <div class="director-header">
+                        <img class="director-photo" src="images/anirvan-roy.png" alt="Anirvan Roy" width="112" height="112" loading="lazy">
+                        <div>
+                            <h4>Anirvan Roy</h4>
+                            <p class="director-role">Director – Business Development &amp; Finance</p>
+                        </div>
+                    </div>
                     <p>Anirvan Roy is a seasoned business and finance leader with over three decades of experience in building and scaling businesses within large, complex, and highly regulated environments. As Director – Business Development &amp; Finance at Astranexus Private Ltd, he is responsible for shaping the company’s growth strategy, financial framework, and strategic partnerships as it enters India’s space and defence sectors.</p>
                     <p>Anirvan has held multiple senior leadership roles at ExxonMobil Corporation and its affiliates across India and the Asia Pacific region, including General Manager – Distributor Business Development and General Manager, Automotive Lubricants. He has also served as Chief Executive Officer of Petronas Lubricants India. Across these roles, he has led large-scale commercial operations, driven multi-channel market expansion, and delivered sustained growth in competitive and technical compliance-intensive marketplaces.</p>
                     <p>His experience uniquely combines commercial acumen with financial rigor—spanning strategic planning, large-account development, and channel transformation alongside capital allocation, project finance, M&amp;A, governance, and enterprise-wide control systems. He is particularly recognized for aligning business growth with strong financial discipline and operational resilience.</p>
                     <p>At Astranexus, Anirvan is focused on building institution-grade capabilities from the ground up—establishing robust financial and governance structures while simultaneously enabling agile market entry &amp; strategic partnerships with scalable business models.</p>
+                </article>
+                <article class="director-card reveal">
+                    <div class="director-header">
+                        <img class="director-photo" src="images/joseph-mathews.png" alt="Joseph Mathews" width="112" height="112" loading="lazy">
+                        <div>
+                            <h4>Joseph Mathews</h4>
+                            <p class="director-role">Director – Sales</p>
+                        </div>
+                    </div>
+                    <p>Joseph Mathews serves as Director – Sales, bringing over 37 years of diverse professional experience across industries and international markets.</p>
+                    <p>He began his career in 1989 in the office automation and equipment sector, before expanding his experience to East Africa, where he worked in duty-free retail from 1994 to 2000. Returning to India, he went on to build over two decades of expertise in corporate sales within the workplace design and build services sector, where he established a strong track record in driving revenue growth, managing key client relationships, and delivering large-scale solutions.</p>
+                    <p>Currently, Joseph leads sales initiatives in Astranexus India’s aerospace and defence sector, where he focuses on strategic business development, partnership building, and market expansion. His approach is anchored in long-term relationship building, deep market understanding, and delivering value-driven outcomes.</p>
                 </article>
             </div>
         </div>
